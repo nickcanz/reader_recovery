@@ -26,7 +26,6 @@ Vagrant::Config.run do |config|
   #
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "~/development/cookbooks"
-    chef.add_recipe "ruby193"
     chef.add_recipe "reader_recovery"
   end
 
