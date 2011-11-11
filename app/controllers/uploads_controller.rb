@@ -1,4 +1,4 @@
-class UploadController < ApplicationController
+class UploadsController < ApplicationController
   def create
     respond_to do |format|
       if @upload.save
