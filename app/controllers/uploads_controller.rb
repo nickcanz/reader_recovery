@@ -1,9 +1,8 @@
 class UploadsController < ApplicationController
   def create
+    @upload = params[:file]
     respond_to do |format|
-      if @upload.save
-        format.js
-      end
+      format.js
     end
   end
 end
