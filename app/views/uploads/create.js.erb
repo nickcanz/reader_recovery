@@ -1,5 +1,5 @@
 <%= remotipart_response do %>
-  alert('success!');
+  alert('<%= @upload.to_s %>');
   <% if remotipart_submitted? %>
     alert('via remotipart');
   <% else %>
