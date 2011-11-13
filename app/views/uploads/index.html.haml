@@ -1,4 +1,8 @@
-%h3 Data below
+%h3 Upload Records
 %hr
-= @text
 
+%table
+  - for upload in @uploads
+    %tr
+      %td= upload.upload_time
+      %td= upload.contents
