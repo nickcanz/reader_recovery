@@ -1,3 +1,0 @@
-  Processing by HomeController#index as HTML
-Rendered home/index.html.haml within layouts/application (1.4ms)
-Completed 200 OK in 94ms (Views: 93.7ms | ActiveRecord: 0.0ms)

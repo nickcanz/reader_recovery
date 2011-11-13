@@ -1,10 +1,7 @@
 class UploadsController < ApplicationController
   def create
-    @text = params[:upload][:file].read
-    redirect_to :index
-    #respond_to do |format|
-    #  format.js
-    #end
+    f = params[:upload][:file]
+    redirect_to uploads_path
   end
 
   def index
