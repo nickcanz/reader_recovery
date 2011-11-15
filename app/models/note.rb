@@ -5,9 +5,9 @@ class Note < ActiveRecord::Base
   belongs_to :uploads
 
   validates :title, :presence => true
-  validates :href, :presence => true
-  validates :href, :format => {
-    :with => URI.regexp(%w( http https ))
-  }
+  validates :content, :presence => true
   validates :published_date, :presence => true
+
+  def self.save_from_upload items
+  end
 end
