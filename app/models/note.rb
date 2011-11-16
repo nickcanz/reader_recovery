@@ -12,7 +12,7 @@ class Note < ActiveRecord::Base
     items.each do |item|
       Note.create(
         :title => item["title"],
-        :content => item["content"],
+        :content => item["content"]["content"],
         :published_date => item["published"]
       )
     end

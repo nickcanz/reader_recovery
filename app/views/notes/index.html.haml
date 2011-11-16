@@ -1,0 +1,10 @@
+%h3 Notes
+%hr
+
+%table
+  - for note in @notes
+    %tr
+      %td= note.title
+      %td= note.published_date
+      %td!= note.content
+

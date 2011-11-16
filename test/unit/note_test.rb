@@ -30,11 +30,15 @@ class NoteTest < ActiveSupport::TestCase
     items = [ {
       "published" => Date.new(2011, 10, 20).to_time.to_i,
       "title" => 'Link title',
-      "content" => '<h1>My content</h1>'
+      "content" => {
+        "content" => '<h1>My content</h1>'
+        }
       }, {
       "published" => Date.new(2011, 10, 21).to_time.to_i,
       "title" => 'Another title',
-      "content" => '<h2>Much more content</h2>'
+      "content" => {
+        "content" => '<h2>Much more content</h2>'
+        }
       }
     ]
 
