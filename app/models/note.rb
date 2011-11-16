@@ -9,5 +9,12 @@ class Note < ActiveRecord::Base
   validates :published_date, :presence => true
 
   def self.save_from_upload items
+    items.each do |item|
+      Note.create(
+        :title => item[:title],
+        :content => item[:content],
+        :published_date => item[:published]
+      )
+    end
   end
 end
