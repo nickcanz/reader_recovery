@@ -44,7 +44,12 @@ class NoteTest < ActiveSupport::TestCase
 
     current_count = Note.all.count
 
-    Note.save_from_upload(items)
+    upload = Upload.create(
+      :upload_time => Time.now,
+      :contents => 'Content'
+    )
+
+    Note.save_from_upload(items, upload)
 
     assert_equal current_count+2, Note.all.count
   end
