@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   def index
-    @notes = Note.all
+    @notes = Note.where(:upload_id => params[:upload_id])
     render :index
   end
 end
