@@ -1,0 +1,14 @@
+!!! 5
+%html
+  %head
+    %title Reader Recovery
+    %link{ 'href' => 'http://fonts.googleapis.com/css?family=Ubuntu', 'rel' => 'stylesheet', 'type' => 'text/css'} 
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    %h1.title Reader Recovery
+
+    = render 'shared/nav_menu'
+
+    = yield
