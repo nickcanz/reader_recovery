@@ -5,7 +5,7 @@ class UploadsController < ApplicationController
 
     parsed_upload = JSON.parse(upload_record.contents)
     Note.save_from_upload(parsed_upload["items"], upload_record)
-    redirect_to :controller => 'notes', :action => 'index', :id => upload_record.id
+    redirect_to :controller => 'notes', :action => 'index', :upload_id => upload_record.id
   end
 
   def index
