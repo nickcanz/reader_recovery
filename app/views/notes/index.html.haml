@@ -7,4 +7,5 @@
       %td= note.title
       %td= note.published_date
       %td!= note.content
+      %td= note.tags.collect { |t| t.name }.join(', ')
 

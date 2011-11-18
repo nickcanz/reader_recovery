@@ -28,17 +28,26 @@ class NoteTest < ActiveSupport::TestCase
   test "save from upload" do
 
     items = [ {
-      "published" => Date.new(2011, 10, 20).to_time.to_i,
-      "title" => 'Link title',
-      "content" => {
-        "content" => '<h1>My content</h1>'
-        }
+        "published" => Date.new(2011, 10, 20).to_time.to_i,
+        "title" => 'Link title',
+        "content" => {
+          "content" => '<h1>My content</h1>'
+        },
+        "categories" => [
+          "tag1",
+          "tag2",
+          "tag3"
+        ]
       }, {
-      "published" => Date.new(2011, 10, 21).to_time.to_i,
-      "title" => 'Another title',
-      "content" => {
-        "content" => '<h2>Much more content</h2>'
-        }
+        "published" => Date.new(2011, 10, 21).to_time.to_i,
+        "title" => 'Another title',
+        "content" => {
+          "content" => '<h2>Much more content</h2>'
+        },
+        "categories" => [
+          "tag4",
+          "tag5"
+        ]
       }
     ]
 
@@ -52,5 +61,10 @@ class NoteTest < ActiveSupport::TestCase
     Note.save_from_upload(items, upload)
 
     assert_equal current_count+2, Note.all.count
+
+    latest_note = Note.find(:all, :order => 'created_at desc', :limit => 1).first
+    assert_equal 2, latest_note.tags.count
+    assert_not_nil latest_note.tags.detect { |t| t.name == "tag4" }
+    assert_not_nil latest_note.tags.detect { |t| t.name == "tag5" }
   end
 end
