@@ -1,8 +1,0 @@
-<%= remotipart_response do %>
-  alert('<%= @upload.to_s %>');
-  <% if remotipart_submitted? %>
-    alert('via remotipart');
-  <% else %>
-    alert('via native');
-  <% end %>
-<% end %>
