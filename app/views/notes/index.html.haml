@@ -1,11 +1,13 @@
 %h3 Notes
 %hr
 
-%table
   - for note in @notes
-    %tr
-      %td= note.title
-      %td= Time.at(note.published_date).strftime("%d %b %Y")
-      %td!= note.content
-      %td= note.tags.collect { |t| t.name }.join(', ')
+    .note
+      .note-title
+        %time= Time.at(note.published_date).strftime("%d %b %Y")
+        %h4= note.title
+      %p!= note.content
+      .note-tags
+        - for tag in note.tags
+          =link_to tag.name, :controller => 'tags', :action => 'show', :id => tag.id
 
