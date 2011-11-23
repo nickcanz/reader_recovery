@@ -13,10 +13,9 @@ class Note < ActiveRecord::Base
       n = Note.create(
         :upload_id => upload_record.id,
         :title => item["title"],
-        :content => item["content"]["content"],
+        :content => item["content"].nil? ? "" : item["content"]["content"],
         :published_date => item["published"]
       )
-
       Tag.save_from_upload item["categories"], n
     end
   end

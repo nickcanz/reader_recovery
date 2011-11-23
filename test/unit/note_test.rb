@@ -67,4 +67,18 @@ class NoteTest < ActiveSupport::TestCase
     assert_not_nil latest_note.tags.detect { |t| t.name == "tag4" }
     assert_not_nil latest_note.tags.detect { |t| t.name == "tag5" }
   end
+
+  test "save from upload handles null content" do
+    upload_record = Upload.create( :upload_time => Time.now, :contents => 'd')
+    items = [{
+      "title" => "The title",
+      "published_date" => Time.now,
+      "categories" => [
+        "tag1",
+        "tag2"
+      ]
+    }]
+
+    Note.save_from_upload(items, upload_record)
+  end
 end
