@@ -13,10 +13,10 @@ class UploadsControllerTest < ActionController::TestCase
 
   test "creates upload from file" do
     sample_file = File.join(File.expand_path(File.dirname(__FILE__)), 'sample_upload.json')
-    post :create, { :upload => { :file => Rack::Test::UploadedFile.new(sample_file, 'application/json') } }
+    post :create, { :upload => { :name => 'The best upload', :file => Rack::Test::UploadedFile.new(sample_file, 'application/json') } }
     upload = Upload.find(:all, :order => 'created_at desc', :limit => 1).first
     assert_response :redirect
     assert_redirected_to(:controller => 'notes', :action => 'index', :upload_id => upload.id )
-    assert_equal File.open(sample_file).read, upload.contents
+    assert_equal 'The best upload', upload.name
   end
 end

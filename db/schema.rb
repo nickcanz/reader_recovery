@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111118013032) do
+ActiveRecord::Schema.define(:version => 20111123204959) do
 
   create_table "notes", :force => true do |t|
     t.string   "title"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20111118013032) do
     t.datetime "updated_at"
     t.datetime "upload_time"
     t.text     "contents"
+    t.string   "name"
   end
 
 end

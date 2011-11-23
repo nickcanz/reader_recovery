@@ -1,9 +1,10 @@
 class UploadsController < ApplicationController
   def create
     f = params[:upload][:file]
-    upload_record = Upload.create(:upload_time => Time.now.utc, :contents => f.read.to_s)
+    raw_json = f.read.to_s
+    upload_record = Upload.create(:upload_time => Time.now.utc, :name => params[:upload][:name])
 
-    parsed_upload = JSON.parse(upload_record.contents)
+    parsed_upload = JSON.parse(raw_json)
     Note.save_from_upload(parsed_upload["items"], upload_record)
     redirect_to :controller => 'notes', :action => 'index', :upload_id => upload_record.id
   end
