@@ -3,11 +3,5 @@
 %p
   You can use this website to upload exported JSON files in order to turn your information back into an HTML format you can use.
 
-
-
-= form_for @upload, :html => { :multipart => true } do |f|
-  .field
-    = f.label :file
-    = f.file_field :file
-  .actions
-    = f.submit
+%h3
+  = link_to "Make a new Upload now!", :controller => 'uploads', :action => 'new'

@@ -13,4 +13,9 @@ class UploadsController < ApplicationController
     @uploads = Upload.all
     render :index
   end
+
+  def new
+    @upload = Upload.new
+    render :new
+  end
 end
