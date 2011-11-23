@@ -1,22 +1,22 @@
 require 'test_helper'
 
 class NoteTest < ActiveSupport::TestCase
-  test "title is required" do
+  test "Note:title is required" do
     note = Note.new(:content => 'http://www.google.com', :published_date => Time.now)
     assert note.invalid?
   end
 
-  test "published date is required" do
+  test "Note:published_date is required" do
     note = Note.new(:title => 'The title', :content => 'http://www.google.com')
     assert note.invalid?
   end
 
-  test "content is required and formatted" do
+  test "Note:content is required and formatted" do
     note = Note.new(:title => 'The title', :published_date => Time.now)
     assert note.invalid?
   end
 
-  test "all data filled out is valid" do
+  test "Note, all data filled out is valid" do
     note = Note.new(
       :title => 'My title',
       :content => 'My content',
@@ -25,7 +25,7 @@ class NoteTest < ActiveSupport::TestCase
     assert note.valid?
   end
 
-  test "save from upload" do
+  test "Note#save_from_upload works" do
 
     items = [ {
         "published" => Date.new(2011, 10, 20).to_time.to_i,
@@ -34,9 +34,9 @@ class NoteTest < ActiveSupport::TestCase
           "content" => '<h1>My content</h1>'
         },
         "categories" => [
-          "tag1",
-          "tag2",
-          "tag3"
+          "/label/tag1",
+          "/label/tag2",
+          "/label/tag3"
         ]
       }, {
         "published" => Date.new(2011, 10, 21).to_time.to_i,
@@ -45,8 +45,8 @@ class NoteTest < ActiveSupport::TestCase
           "content" => '<h2>Much more content</h2>'
         },
         "categories" => [
-          "tag4",
-          "tag5"
+          "/label/tag4",
+          "/label/tag5"
         ]
       }
     ]
@@ -68,7 +68,7 @@ class NoteTest < ActiveSupport::TestCase
     assert_not_nil latest_note.tags.detect { |t| t.name == "tag5" }
   end
 
-  test "save from upload handles null content" do
+  test "Note#save_from_upload handles null content" do
     upload_record = Upload.create( :upload_time => Time.now, :contents => 'd')
     items = [{
       "title" => "The title",
