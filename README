@@ -3,7 +3,7 @@
 ===Home
  - Get rid of form on home page
 
-===Uploads 
+===Uploads
  - list notes per upload
  - name an upload
  - Create new upload on upload#create instead of home#index
@@ -13,6 +13,5 @@
 
 ===Tags
  - create links on tags#index
- - list notes on a particular tag
  - unique tags
-
+ - list notes on a particular tag
