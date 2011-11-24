@@ -1,10 +1,16 @@
 { "items" : [{
   "published": 1231411290,
   "title" : "Link title",
+  "alternate": {
+    "href": "http://www.thegoogs.com"
+  },
   "content" : { "content": "<h1>My content</h1>" }
   }, {
   "published" : 1319266800,
   "title" : "Another title",
-  "content" : { "content": "<h2>Much more content</h2>" }
+  "content" : { "content": "<h2>Much more content</h2>" },
+  "alternate": {
+    "href": "http://www.thegoogs.com"
+  }
 }]
 }

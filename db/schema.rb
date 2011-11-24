@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111123204959) do
+ActiveRecord::Schema.define(:version => 20111124134118) do
 
   create_table "notes", :force => true do |t|
     t.string   "title"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20111123204959) do
     t.datetime "published_date"
     t.text     "content"
     t.integer  "upload_id"
+    t.string   "title_href"
   end
 
   create_table "tags", :force => true do |t|

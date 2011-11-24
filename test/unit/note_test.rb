@@ -1,27 +1,42 @@
 require 'test_helper'
 
 class NoteTest < ActiveSupport::TestCase
+
+  setup do
+    @base_note_attrs = {
+      :content => 'http://www.google.com',
+      :published_date => Time.now,
+      :title => 'The Googles',
+      :title_href => 'http://www.google.com',
+    }
+  end
+
+  test "Note:title_href is required" do
+    @note_attrs = @base_note_attrs.merge(:title_href => '')
+    note = Note.new(@note_attrs)
+    assert note.invalid?, "Title_href is required on Note"
+  end
+
   test "Note:title is required" do
-    note = Note.new(:content => 'http://www.google.com', :published_date => Time.now)
-    assert note.invalid?
+    @note_attrs = @base_note_attrs.merge(:title => '')
+    note = Note.new(@note_attrs)
+    assert note.invalid?, "Title is required on Note"
   end
 
   test "Note:published_date is required" do
-    note = Note.new(:title => 'The title', :content => 'http://www.google.com')
-    assert note.invalid?
+    @note_attrs = @base_note_attrs.merge(:published_date => nil)
+    note = Note.new(@note_attrs)
+    assert note.invalid?, "Published date is required on note"
   end
 
   test "Note:content is required and formatted" do
-    note = Note.new(:title => 'The title', :published_date => Time.now)
-    assert note.invalid?
+    @note_attrs = @base_note_attrs.merge(:content => '')
+    note = Note.new(@note_attrs)
+    assert note.invalid?, 'Content is required on note'
   end
 
   test "Note, all data filled out is valid" do
-    note = Note.new(
-      :title => 'My title',
-      :content => 'My content',
-      :published_date => Time.now)
-
+    note = Note.new(@base_note_attrs)
     assert note.valid?
   end
 
@@ -30,6 +45,9 @@ class NoteTest < ActiveSupport::TestCase
     items = [ {
         "published" => Date.new(2011, 10, 20).to_time.to_i,
         "title" => 'Link title',
+        "alternate" => {
+          "href" => 'http://www.google.com',
+        },
         "content" => {
           "content" => '<h1>My content</h1>'
         },
@@ -41,6 +59,9 @@ class NoteTest < ActiveSupport::TestCase
       }, {
         "published" => Date.new(2011, 10, 21).to_time.to_i,
         "title" => 'Another title',
+        "alternate" => {
+          "href" => 'http://www.moregoogle.com',
+        },
         "content" => {
           "content" => '<h2>Much more content</h2>'
         },
@@ -72,6 +93,9 @@ class NoteTest < ActiveSupport::TestCase
     upload_record = Upload.create( :upload_time => Time.now, :contents => 'd')
     items = [{
       "title" => "The title",
+      "alternate" => {
+        "href" => "my href",
+      },
       "published_date" => Time.now,
       "categories" => [
         "tag1",
