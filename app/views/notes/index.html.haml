@@ -5,7 +5,9 @@
     .note
       .note-title
         %time= Time.at(note.published_date).strftime("%d %b %Y")
-        %h4= note.title
+        %h4
+          %a{ 'href' => "#{note.title_href}"}
+            = note.title
       %p!= note.content
       .note-tags
         - for tag in note.tags
