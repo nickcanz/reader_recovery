@@ -45,9 +45,9 @@ class NoteTest < ActiveSupport::TestCase
     items = [ {
         "published" => Date.new(2011, 10, 20).to_time.to_i,
         "title" => 'Link title',
-        "alternate" => {
+        "alternate" => [{
           "href" => 'http://www.google.com',
-        },
+        }],
         "content" => {
           "content" => '<h1>My content</h1>'
         },
@@ -59,9 +59,9 @@ class NoteTest < ActiveSupport::TestCase
       }, {
         "published" => Date.new(2011, 10, 21).to_time.to_i,
         "title" => 'Another title',
-        "alternate" => {
+        "alternate" => [{
           "href" => 'http://www.moregoogle.com',
-        },
+        }],
         "content" => {
           "content" => '<h2>Much more content</h2>'
         },
@@ -93,9 +93,9 @@ class NoteTest < ActiveSupport::TestCase
     upload_record = Upload.create( :upload_time => Time.now, :contents => 'd')
     items = [{
       "title" => "The title",
-      "alternate" => {
+      "alternate" => [{
         "href" => "my href",
-      },
+      }],
       "published_date" => Time.now,
       "categories" => [
         "tag1",
