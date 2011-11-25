@@ -1,17 +1,6 @@
 ==TODO
 
-===Home
- - Get rid of form on home page
-
-===Uploads
- - list notes per upload
- - name an upload
- - Create new upload on upload#create instead of home#index
-
-===Notes
- - Add 'related' info as html on note title 
-
 ===Tags
- - create links on tags#index
  - unique tags
+ - create links on tags#index
  - list notes on a particular tag

@@ -4,5 +4,6 @@
 %table
   - for upload in @uploads
     %tr
-      %td= upload.upload_time
-      %td= upload.contents
+      %td= upload.upload_time.strftime("%d %b %Y")
+      %td= upload.name
+      %td= link_to "Notes", :controller => 'notes', :action => 'index', :upload_id => upload.id
