@@ -22,5 +22,4 @@ group :test do
   # Pretty printed test output
   gem 'turn', :require => false
   gem 'minitest', '~> 2.8'
-  gem 'ruby-debug19', :require => 'ruby-debug'
 end
