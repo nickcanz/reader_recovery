@@ -44,7 +44,10 @@ class NoteTest < ActiveSupport::TestCase
   end
 
   test "Note with tags_attributes has Notes" do
-    note = Note.new(:tags_attributes => [{ :name => "rails" }, { :name => "ruby" }])
+    @note_attrs = @base_note_attrs.merge(
+      :tags_attributes => [{ :name => "rails" }, { :name => "ruby" }]
+    )
+    note = Note.create!(@note_attrs)
     assert_equal 2, note.tags.size
   end
 end
