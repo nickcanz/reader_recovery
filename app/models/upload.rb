@@ -18,9 +18,9 @@ protected
     item["alternate"]    ||= []
     item["alternate"][0] ||= {}
     {
-      :title           => item["title"],
+      :title           => item["title"] || "Default title",
       :title_href      => item["alternate"][0]["href"],
-      :content         => item["content"],
+      :content         => item["content"]["content"],
       :published_date  => item["published"],
       :tags_attributes => self.tag_attributes_from_categories(item["categories"])
     }

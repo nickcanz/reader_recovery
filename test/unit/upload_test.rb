@@ -65,8 +65,8 @@ class UploadTest < ActiveSupport::TestCase
       u.name = "my upload"
       u.upload_time = Time.now
     end
-    assert_equal 2, upload.notes.size
     assert_equal 2, upload.notes.count
+    assert_equal "<h1>My content</h1>", upload.notes.first.content
   end
 
   test "Upload with items and categories has Notes with Tags" do
