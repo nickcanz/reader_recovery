@@ -1,6 +1,11 @@
 class NotesController < ApplicationController
   def index
-    @notes = params[:upload_id].nil?  ? Note.all(:limit => 5) : Note.where(:upload_id => params[:upload_id]).limit(5)
+    page = params[:page] || 1
+    if (params[:upload_id].nil?)
+      @notes = Note.paginate(:page => page)
+    else
+      @notes = Note.where(:upload_id => params[:upload_id]).paginate(:page => page)
+    end
     render :index
   end
 end

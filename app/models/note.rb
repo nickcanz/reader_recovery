@@ -8,5 +8,5 @@ class Note < ActiveRecord::Base
 
   belongs_to :upload
 
-  validates_presence_of :title, :content, :published_date, :title_href
+  validates_presence_of :title, :published_date, :title_href
 end

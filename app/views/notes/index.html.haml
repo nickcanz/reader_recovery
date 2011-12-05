@@ -12,3 +12,5 @@
       .note-tags
         - for tag in note.tags
           =link_to tag.name, :controller => 'tags', :action => 'show', :id => tag.id
+
+  = will_paginate @notes
