@@ -29,12 +29,6 @@ class NoteTest < ActiveSupport::TestCase
     assert note.invalid?, "Published date is required on note"
   end
 
-  test "Note:content is required and formatted" do
-    @note_attrs = @base_note_attrs.merge(:content => '')
-    note = Note.new(@note_attrs)
-    assert note.invalid?, 'Content is required on note'
-  end
-
   test "Note, all data filled out is valid" do
     note = Note.new(@base_note_attrs)
     assert note.valid?
