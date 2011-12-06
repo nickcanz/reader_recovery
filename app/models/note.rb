@@ -9,4 +9,10 @@ class Note < ActiveRecord::Base
   belongs_to :upload
 
   validates_presence_of :title, :published_date, :title_href
+
+  def tags_attributes=(tags_arr)
+    tags_arr.each do |t|
+      self.tags << Tag.find_or_create_by_name(t[:name]) unless t[:name].nil?
+    end
+  end
 end

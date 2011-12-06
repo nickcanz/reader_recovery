@@ -42,6 +42,18 @@ class NoteTest < ActiveSupport::TestCase
       :tags_attributes => [{ :name => "rails" }, { :name => "ruby" }]
     )
     note = Note.create!(@note_attrs)
-    assert_equal 2, note.tags.size
+    assert_equal 2, Tag.all.count, "Two tags should be created"
+    new_note = Note.create!(@note_attrs)
+    assert_equal 2, Tag.all.count, "Two tags should have been re-used"
+  end
+
+  test "Note with tags_attributes doesn't save blank tags" do
+    @note_attrs = @base_note_attrs.merge(
+      :tags_attributes => [{ :name => "rails" }, { :name => "ruby" }, { :name => nil }]
+    )
+    note = Note.create!(@note_attrs)
+    assert_equal 2, Tag.all.count, "Two tags should be created"
+    new_note = Note.create!(@note_attrs)
+    assert_equal 2, Tag.all.count, "Two tags should have been re-used"
   end
 end
