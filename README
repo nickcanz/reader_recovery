@@ -1,9 +1,10 @@
 ==TODO
 
-===All
- - Users
-
 ===Tags
- - unique tags
  - create links on tags#index
- - list notes on a particular tag
+ - Tags#show: list notes on a particular tag
+
+===All
+ - Rollup migrations
+ - Users
+ - Queue structure that handles upload parsing
