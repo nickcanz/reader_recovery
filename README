@@ -1,10 +1,10 @@
 ==TODO
 
-===Tags
- - create links on tags#index
- - Tags#show: list notes on a particular tag
-
 ===All
  - Rollup migrations
+ - Heroku deploy
  - Users
  - Queue structure that handles upload parsing
+
+===Notes
+ - Search

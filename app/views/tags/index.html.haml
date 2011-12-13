@@ -2,5 +2,5 @@
 %table
   - for tag in @tags
     %tr
-      %td= tag.name
+      %td=link_to tag.name, :controller => 'tags', :action => 'show', :id => tag.id
 

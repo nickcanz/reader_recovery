@@ -1,0 +1,15 @@
+
+%h3= "Notes tagged: #{ @tag.name.upcase}"
+%hr
+
+- for note in @tag.notes
+  .note
+    .note-title
+      %time= Time.at(note.published_date).strftime("%d %b %Y")
+      %h4
+        %a{ 'href' => "#{note.title_href}"}
+          = note.title
+    %p!= note.content
+    .note-tags
+      - for tag in note.tags
+        =link_to tag.name, :controller => 'tags', :action => 'show', :id => tag.id
