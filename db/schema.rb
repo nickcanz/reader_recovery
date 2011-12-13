@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111204165642) do
+ActiveRecord::Schema.define(:version => 20111204160313) do
 
   create_table "note_tag_relationships", :force => true do |t|
     t.integer  "note_id"
@@ -22,12 +22,12 @@ ActiveRecord::Schema.define(:version => 20111204165642) do
 
   create_table "notes", :force => true do |t|
     t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "title_href"
     t.datetime "published_date"
     t.text     "content"
     t.integer  "upload_id"
-    t.string   "title_href"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tags", :force => true do |t|
@@ -37,11 +37,10 @@ ActiveRecord::Schema.define(:version => 20111204165642) do
   end
 
   create_table "uploads", :force => true do |t|
+    t.datetime "upload_time"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "upload_time"
-    t.text     "contents"
-    t.string   "name"
   end
 
 end
