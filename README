@@ -8,3 +8,6 @@
 
 ===Notes
  - Search
+
+#start postgres
+/usr/lib/postgresql/8.4/bin/postgres -D /var/lib/postgresql/data
