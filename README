@@ -2,7 +2,6 @@
 
 ===All
  - start postgres on vagrant up
- - Heroku deploy
  - Users
  - Queue structure that handles upload parsing
 
