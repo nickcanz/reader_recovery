@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(:version => 20111204160313) do
   end
 
   create_table "notes", :force => true do |t|
-    t.string   "title"
-    t.string   "title_href"
+    t.text     "title"
+    t.text     "title_href"
     t.datetime "published_date"
     t.text     "content"
     t.integer  "upload_id"
