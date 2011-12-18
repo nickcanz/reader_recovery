@@ -3,14 +3,15 @@
 
   - for note in @notes
     .note
-      .note-title
-        %time= Time.at(note.published_date).strftime("%d %b %Y")
-        %h4
-          %a{ 'href' => "#{note.title_href}"}
-            = note.title
-      %p!= note.content
-      .note-tags
-        - for tag in note.tags
-          =link_to tag.name, :controller => 'tags', :action => 'show', :id => tag.id
+      .note-date= Time.at(note.published_date).strftime("%d %b %Y")
+      %h4
+        %a{ 'href' => "#{note.title_href}"}
+          != note.title
+      -if !note.content.blank?
+        .note-content!= note.content
+      -if !note.tags.empty?
+        .note-tags
+          - for tag in note.tags
+            =link_to tag.name, :controller => 'tags', :action => 'show', :id => tag.id
 
   = will_paginate @notes
