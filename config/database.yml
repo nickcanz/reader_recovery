@@ -1,7 +1,9 @@
 development:
   adapter: postgresql
   database: reader_recovery
-  username: vagrant
+  username: reader_recovery
+  password: reader_recovery
+  host: 127.0.0.1
   pool: 5
 
 # Warning: The database defined as "test" will be erased and
@@ -10,7 +12,9 @@ development:
 test:
   adapter: postgresql
   database: reader_recovery_test
-  username: vagrant
+  username: reader_recovery_test
+  password: reader_recovery_test
+  host: 127.0.0.1
   pool: 5
 
 production:
